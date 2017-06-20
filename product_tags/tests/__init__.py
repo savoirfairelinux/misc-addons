@@ -4,4 +4,4 @@
 # © 2017 Savoir-faire Linux
 # License GPL-3.0 or later (http://www.gnu.org/licenses/gpl-3.0).
 
-from . import models
+from . import test_product_tag

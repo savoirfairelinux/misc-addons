@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
 
         <record id="product_tag_form" model="ir.ui.view">
@@ -17,7 +17,7 @@
                     </group>
                 </form>
             </field>
-        </record>    
+        </record>
 
         <record id="product_tag_tree" model="ir.ui.view">
             <field name="name">product.tag.view.tree</field>
@@ -50,6 +50,7 @@
                 </search>
             </field>
         </record>
+
         <record id="product_tag_action_form" model="ir.actions.act_window">
             <field name="name">Product Tags</field>
             <field name="type">ir.actions.act_window</field>
@@ -59,48 +60,11 @@
             <field name="search_view_id" ref="product_tag_search"/>
             <field name="view_id" ref="product_tag_tree"/>
         </record>
+
         <menuitem action="product_tag_action_form"
             groups="base.group_no_one"
             id="menu_product_tag_action_form"
             parent="sale.prod_config_main" sequence="3"/>
-    
-        <record id="product_template_tag_search_inherit" model="ir.ui.view">
-            <field name="name">product.template.tag.view.search</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_search_view"/>
-            <field name="arch" type="xml">
-                <field name="name" position="after">
-                    <field name="tag_ids" string="Tags" filter_domain="['|',('tag_ids','ilike',self),('tag_ids','child_of',self)]"/>
-                </field>
-            </field>
-        </record>
-
-        <record id="product_template_form_inherit" model="ir.ui.view">
-            <field name="name">product.template.view.form</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//h1" position="after">
-                    <field name="tag_ids" widget="many2many_tags" placeholder="Tags..."/>
-                </xpath>
-            </field>
-        </record>
-
-        <!--  kanban view   -->
-
-        <record model="ir.ui.view" id="product_template_kanban">
-            <field name="name">Product Template Tag Kanban</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_kanban_view"/>
-            <field name="arch" type="xml">
-                <div name="tags" position="inside">
-                    <ul>
-                        <li><field name="tag_ids"/></li>
-                    </ul>
-                </div>
-            </field>
-        </record>
-        
 
     </data>
-</openerp>
+</odoo>

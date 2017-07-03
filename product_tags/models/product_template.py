@@ -14,6 +14,6 @@ class ProductTemplate(models.Model):
         string='Tags',
         comodel_name='product.tag',
         relation='product_product_tag_rel',
-        column1='tag_id',
-        column2='product_id',
+        column1='product_id',
+        column2='tag_id',
     )

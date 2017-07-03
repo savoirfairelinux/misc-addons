@@ -51,23 +51,32 @@ class ProductTag(models.Model):
         'Image',
     )
 
+    product_ids = fields.Many2many(
+        'product.template',
+        column1='tag_id',
+        column2='product_id',
+        string='Products',
+    )
+
     _parent_store = True
     _parent_order = 'name'
-    _order = 'parent_left'
+    _order = 'parent_left, name'
 
     @api.multi
     def name_get(self):
         """ Return the tags' display name, including their direct parent. """
-        res = {}
+        res = []
         for record in self:
             current = record
-            name = current.name
-            while current.parent_id:
-                name = '%s / %s' % (current.parent_id.name, name)
+            names = []
+            while current:
+                names.append(current.name)
+                # name = '%s / %s' % (current.parent_id.name, name)
                 current = current.parent_id
-            res[record.id] = name
+            # res[record.id] = name
+            res.append((record.id, ' / '.join(reversed(names))))
 
-        return res.items()
+        return res
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):

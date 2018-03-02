@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # © 2013 Julius Network Solutions SARL <contact@julius.fr>
 # © 2015 credativ ltd. <info@credativ.co.uk>
-# © 2017 Savoir-faire Linux
+# © 2017-2018 Savoir-faire Linux
 # License GPL-3.0 or later (http://www.gnu.org/licenses/gpl-3.0).
 
 {
     "name": "Product Tags",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "author": "Julius Network Solutions, Savoir-faire Linux",
     "website": "http://julius.fr",
     "category": "Sales Management",
